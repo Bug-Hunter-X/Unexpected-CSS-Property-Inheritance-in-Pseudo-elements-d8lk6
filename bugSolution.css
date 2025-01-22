@@ -1,0 +1,20 @@
+The solution involves explicitly resetting potentially inheritable properties within the pseudo-element's declaration.  This prevents any unexpected inheritance from the parent element.
+
+```css
+.parent {
+  width: 200px;
+  height: 200px;
+  background-color: lightblue;
+  font-size: 24px; /*  Source of the inheritance */
+}
+
+.parent::before {
+  content: "Hello";
+  background-color: lightcoral;
+  font-size: 16px;
+  font-family: inherit; /* Or any other potentially problematic inherited properties */
+  /* Explicitly reset problematic properties */
+}
+```
+
+By resetting or explicitly setting inheritable properties within the pseudo-element, we ensure consistent and predictable styling, regardless of the parent's properties.
