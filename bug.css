@@ -1,0 +1,18 @@
+The following CSS code snippet demonstrates an uncommon issue where a pseudo-element selector (:before or :after) inherits unexpected properties from its parent element, even with explicit styling in the pseudo-element's declaration.
+
+```css
+.parent {
+  width: 200px;
+  height: 200px;
+  background-color: lightblue;
+  font-size: 24px; /* Unexpected inheritance source */
+}
+
+.parent::before {
+  content: "Hello";
+  background-color: lightcoral;
+  font-size: 16px; /* This is overridden */
+}
+```
+
+In this case, the `font-size` property from the `.parent` element might unexpectedly leak into the pseudo-element even though a `font-size` is explicitly set for `::before`.  This is due to how some browsers handle property inheritance, especially with pseudo-elements. The `font-size` property inherits and causes unexpected behavior in the pseudo-element's styling.
